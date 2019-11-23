@@ -18,6 +18,12 @@ public class TimeUtil {
 
     // public static DateFormat format = new SimpleDateFormat("yyyyMMdd");
     private static  final int NUMBER_1000=1000;
+
+    /**
+     * 以此刻时间为准，得到days月前那一天0时0分0秒的时间戳
+     * @param days
+     * @return 时间戳（10位）
+     */
     public static long beforeFewDays(int days) {
         Calendar calendar = Calendar.getInstance(); //日期类
         calendar.setTime(new Date());
@@ -29,6 +35,11 @@ public class TimeUtil {
         return updateDate.getTime() / NUMBER_1000;
     }
 
+    /**
+     * 以此刻时间为准，得到month月前那一天0时0分0秒的时间戳
+     * @param month
+     * @return 时间戳（10位）
+     */
     public static long beforeFewMonthLong(int month) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -42,9 +53,9 @@ public class TimeUtil {
     }
 
     /**
-     * Date时间转为yyyyMM形式201909，可以是当前月，也可以是几个月前
-     * @param month
-     * @return
+     * 以此刻Date时间为准，得到month月前那一月，格式为yyyyMM形式201909
+     * @param month int型 表示n个月前，可以是当前月，也可以是几个月前
+     * @return  以此刻为基准的n个月前，返回格式：201909
      */
     public static String beforeFewMonth(int month) {
         Calendar calendar = Calendar.getInstance();
@@ -58,20 +69,35 @@ public class TimeUtil {
         return long2String(updateDate.getTime() / NUMBER_1000, "yyyyMM");
     }
 
+    /**
+     * yyyy-MM-dd HH:mm:ss格式的字符串日期转成时间戳（10位）
+     * @param date
+     * @return 时间戳（10位）
+     */
     public static long String2Long(String date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  //指定的格式为yyyy-MM-dd HH:mm:ss
         ParsePosition pos = new ParsePosition(0);
         Date strDate = format.parse(date, pos);
         return strDate.getTime() / NUMBER_1000;
     }
 
+    /**
+     * long型时间戳转指定日期样式输出
+     * @param time 时间戳（10位）
+     * @param format 自己指定的日期格式，如 yyyyMM yyyyMMdd
+     * @return String类型日期
+     */
     public static String long2String(long time, String format) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);   //指定的格式为format
         Timestamp timestamp = new Timestamp(time * NUMBER_1000);
         return simpleDateFormat.format(timestamp);
     }
 
-
+    /**
+     * 封装beforeFewMonth()方法，以此刻时间为准，得到连续前month个月的List链表（字符串日期 201911）
+     * @param month=3
+     * @return [201911, 201910, 201909, 201908]
+     */
     public static List<String> partitions(int month) {
         List<String> list = new ArrayList();
         for (int i = 0; i <= month; i++) {
@@ -82,6 +108,12 @@ public class TimeUtil {
 
     private static  final int NUMBER_7=7;
     private static  final int NUMBER_15=15;
+
+    /**
+     * 以今天为准，返回今天、7天前、15天前的日期（格式为yyyyMM）
+     * @param dateTag 以今天20191123为例
+     * @return "today"返回：[201911]  "seven":[201911]     "halfMonth":[201911]
+     */
     public static List<String> partitons(String dateTag) {
         int day = new Date().getDate();
         List<String> list = new ArrayList();
@@ -133,6 +165,12 @@ public class TimeUtil {
         return list;
     }
 
+    /**
+     * Date型时间转指定格式日期
+     * @param date  new date()
+     * @param regex yyyyMMdd
+     * @return  20191123
+     */
     public static String Date2String(Date date, String regex) {
         DateFormat dateFormat = new SimpleDateFormat(regex);
         return dateFormat.format(date);

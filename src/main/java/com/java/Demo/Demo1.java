@@ -2,9 +2,12 @@ package com.java.Demo;
 
 import com.java.util.TimeUtil;
 
+import java.sql.Timestamp;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * description:
@@ -16,6 +19,7 @@ public class Demo1 {
     public static void main(String[] args) {
         /**
          * SimpleDateFormat类格式化日期
+         * SimpleDateFormat类就两个用途：将String转Date(parse方法)，和将Date转String(format方法)
          */
         Date date = new Date(); //date=现在的时间 ,机器都读得懂的时间
         long timeStamp = date.getTime();    //Date转成时间戳
@@ -23,12 +27,12 @@ public class Demo1 {
         String yyyyMM = TimeUtil.long2String(timeStamp/1000, "yyyyMM"); //时间戳转为10位的
         System.out.println("yyyyMM = " + yyyyMM);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateStr = sdf.format(date);  // dateStr = 2019-11-22 21:14:52
+        String dateStr = sdf.format(date);  // dateStr = 2019-11-22 21:14:52  formate方法:将日期类型转成字符串类型
         System.out.println("dateStr = " + dateStr);
         System.out.println("========================================");
 
         /**
-         * 日期类
+         * Calendar日期类
          */
         Calendar calendar = Calendar.getInstance(); //使用单例模式创建类的实例，只能存在这一个实例化对象被使用
         System.out.println("calendar.getTime() = " + calendar.getTime());   //结果为new Date()日期：Fri Nov 22 21:28:24 CST 2019
@@ -74,7 +78,32 @@ public class Demo1 {
         calendar2.set(Calendar.DAY_OF_MONTH, 1);
         System.out.println(calendar2.getTime());
         Date timeStamp3 = calendar2.getTime();
-        Long endTime = timeStamp3.getTime()/1000;
-        System.out.println(endTime);        //可以提取成一个方法!
+        Long endTime = timeStamp3.getTime()/1000;   //Date的getTime()方法得到的是13位的时间戳
+        System.out.println("endTime:" + endTime);        //可以提取成一个方法!
+
+        System.out.println("========================================");
+
+
+        System.out.println("TimeUtil.beforeFewDays(3):" + TimeUtil.beforeFewDays(3));
+
+
+//        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMdd");
+//        Timestamp t = new Timestamp(endTime*1000);
+//        System.out.println(sdf2.format(t));
+
+//        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        ParsePosition pos = new ParsePosition(0);
+//        Date strDate = sdf2.parse("2013-1-21 15:10:20", pos); //parse 将字符串类型转换为日期Date类型,这里string值格式要和上面pattern中格式一致
+//        System.out.println(strDate);
+
+
+//        List<String> partitions = TimeUtil.partitons("halfMonth");
+//        System.out.println(partitions);
+
+
+//        String yyyyMMdd = TimeUtil.Date2String(new Date(), "yyyyMMdd");
+//        System.out.println(yyyyMMdd);
+
+
     }
 }
