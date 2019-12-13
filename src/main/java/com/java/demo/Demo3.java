@@ -1,4 +1,4 @@
-package com.java.Demo;
+package com.java.demo;
 
 import com.java.util.TimeUtil;
 

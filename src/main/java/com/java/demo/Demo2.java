@@ -1,8 +1,7 @@
-package com.java.Demo;
+package com.java.demo;
 
 import com.java.util.TimeUtil;
 
-import javax.sound.midi.Soundbank;
 import java.util.Calendar;
 import java.util.Date;
 

@@ -1,13 +1,10 @@
-package com.java.Demo;
+package com.java.demo;
 
 import com.java.util.TimeUtil;
 
-import java.sql.Timestamp;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 /**
  * description:
