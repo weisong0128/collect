@@ -4,7 +4,7 @@
 <!-- monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数 -->
 <Configuration status="INFO" monitorInterval="30">
     <Properties>
-
+        <!-- 配置日志输出路径(没有此路径会自动创建) -->
         <Property name="logpath">F:\logs</Property>
     </Properties>
     <!-- 先定义所有的Appender -->
