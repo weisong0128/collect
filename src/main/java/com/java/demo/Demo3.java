@@ -5,6 +5,8 @@ import com.java.util.TimeUtil;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -41,8 +43,25 @@ public class Demo3 {
         long time1 = new Date().getTime();
         System.out.println("time1=" + time1);
 
+        System.out.println("####################");
+        String a = "青岛市:370200";
+        System.out.println(a.substring(0,a.indexOf(":")));
 
-
+        Map<String, Object> map = new HashMap();
+//        map.get("asd");
+        System.out.println("map.get(\"asd\")的值为：" + map.get("asd"));
+        //错误写法  object.toString()方法,这种方法要注意的是object不能为null,否则会报NullPointException，一般别用这种方法。
+        /*if (map.get("asd").toString().isEmpty()) {
+            System.out.println("kongkong");
+        } else {
+            System.out.println("zzzzxzc");
+        }*/
+        //常用写法
+        if (String.valueOf(map.get("asd")).equals("null")) {
+            System.out.println("kongkong");
+        } else {
+            System.out.println("zzzzzz");
+        }
 
     }
 

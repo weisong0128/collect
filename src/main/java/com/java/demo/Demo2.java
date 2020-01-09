@@ -2,6 +2,7 @@ package com.java.demo;
 
 import com.java.util.TimeUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,7 +19,8 @@ public class Demo2 {
         String createTime2 = "1574499098";
         long createTime = Long.parseLong(createTime2);
         System.out.println(createTime);
-        String startStr = TimeUtil.long2String(createTime, "yyyyMM");
+        String startStr = TimeUtil.long2String(createTime, "yyyy-MM-dd");
+        System.out.println("startStr=" + startStr);
         Date startDate = TimeUtil.String2Date(startStr, "yyyyMM");
         Long startTimeStamp = startDate.getTime()/1000;
         System.out.println(startTimeStamp);
@@ -30,7 +32,16 @@ public class Demo2 {
         Long endTimeStamp = endDate.getTime()/1000;
         System.out.println(endTimeStamp);
 
-
+        System.out.println("-----------------------");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String startTime = dateFormat.format(new Date());
+        System.out.println("startTime=" + startTime);
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.DATE, 15);
+        Date time = date.getTime();
+//        System.out.println("time=" + time);
+        String endTime = dateFormat.format(time);
+        System.out.println("endTime=" + endTime);
     }
 
 }
