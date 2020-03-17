@@ -1,6 +1,5 @@
 package com.java.learn;
 
-import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 
 /**
  * description: 描述
