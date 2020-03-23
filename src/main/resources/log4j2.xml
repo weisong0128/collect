@@ -5,7 +5,7 @@
 <Configuration status="INFO" monitorInterval="30">
     <Properties>
         <!-- 配置日志输出路径(没有此路径会自动创建) -->
-        <Property name="logpath">F:\logs</Property>
+        <Property name="logpath">F:\log</Property>
     </Properties>
     <!-- 先定义所有的Appender -->
     <Appenders>
@@ -13,17 +13,11 @@
         <Console name="Console" target="SYSTEM_OUT">
             <!-- 输出日志的格式,%d：输出日志时间点的日期或时间 %p：输出日志信息优先级 %l：输出日志的位置 %m：输出代码中指定的日志具体信息 %n：输出一个回车换行符 -->
             <PatternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
-            <!--<PatternLayout pattern="[%d] [%-5p][%t] - %l - %m%n"/>-->
         </Console>
 
-        <!-- 文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用 -->
-        <File name="log" fileName="${logpath}/test.log" append="false">
-            <patternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
-        </File>
-
         <!-- 这个会打印出所有的info及比它优先级高级别的信息如info/warn/error，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-        <RollingFile name="RollingFileInfo" fileName="${logpath}/info/erp_info.log"
-                     filePattern="${logpath}/info/erp_info_%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="RollingFileInfo" fileName="${logpath}/info/info.log"
+                     filePattern="${logpath}/info/info_%d{yyyy-MM-dd}-%i.log">
             <!-- 该文件只输出level及以上级别的信息(onMatch),如info/warn/error，其他的直接拒绝(onMismatch),即 -->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
@@ -31,9 +25,18 @@
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
+            <!--info文件夹下最多存放9个文件-->
+            <DefaultRolloverStrategy max="9">
+                <Delete basePath="${logpath}/info" maxDepth="1">
+                    <IfFileName glob="info_*.log" />
+                    <!--超过15天删除日志-->
+                    <IfLastModified age="15d" />
+                </Delete>
+            </DefaultRolloverStrategy>
         </RollingFile>
+
         <!-- 会打印warn及以上级别信息如warn/error-->
-        <RollingFile name="RollingFileWarn" fileName="${logpath}/warn/erp_warn.log"
+        <!--<RollingFile name="RollingFileWarn" fileName="${logpath}/warn/erp_warn.log"
                      filePattern="${logpath}/warn/erp_warn_%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
@@ -41,19 +44,29 @@
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
-            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            &lt;!&ndash; DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 &ndash;&gt;
             <DefaultRolloverStrategy max="20"/>
-        </RollingFile>
-        <RollingFile name="RollingFileError" fileName="${logpath}/error/erp_error.log"
-                     filePattern="${logpath}/error/erp_error_%d{yyyy-MM-dd}-%i.log">
+        </RollingFile>-->
+
+        <RollingFile name="RollingFileError" fileName="${logpath}/error/error.log"
+                     filePattern="${logpath}/error/error_%d{yyyy-MM-dd}-%i.log">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="100 MB"/>
             </Policies>
+            <!--info文件夹下最多存放9个文件-->
+            <DefaultRolloverStrategy max="9">
+                <Delete basePath="${logpath}/info" maxDepth="1">
+                    <IfFileName glob="info_*.log" />
+                    <!--超过15天删除日志-->
+                    <IfLastModified age="15d" />
+                </Delete>
+            </DefaultRolloverStrategy>
         </RollingFile>
     </Appenders>
+
     <!-- 然后定义logger，只有定义了logger并引入了appender，appender才会生效-->
     <Loggers>
         <!-- 过滤掉spring和mybatis的一些无用的DEBUG信息 -->
@@ -63,7 +76,7 @@
             <!-- 引入了下面几种Appender节点 -->
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RollingFileInfo"/>
-            <AppenderRef ref="RollingFileWarn"/>
+            <!--<AppenderRef ref="RollingFileWarn"/>-->
             <AppenderRef ref="RollingFileError"/>
         </Root>
     </Loggers>

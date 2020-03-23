@@ -1,5 +1,7 @@
 package com.java.api;
 
+import java.net.URL;
+
 /**
  * description:
  * author: ws
@@ -36,5 +38,11 @@ public class SystemDemo {
         for (int i = 0; i < arr2.length; i++) {
             System.out.print(arr2[i]);
         }
+        System.out.println("=======");
+        //获取当前工程路径
+        System.out.println(System.getProperty("user.dir")); //结果：G:\git\ws\collect
+
+        URL resource = SystemDemo.class.getResource("/");//结果：file:/G:/git/ws/collect/target/classes/
+        System.out.println(resource);
     }
 }
