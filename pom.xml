@@ -66,6 +66,14 @@
             <version>1.2.62</version>
         </dependency>
 
+        <!-- rabbitmq客户端依赖包 -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.6.5</version>
+        </dependency>
+
+
 
     </dependencies>
 
