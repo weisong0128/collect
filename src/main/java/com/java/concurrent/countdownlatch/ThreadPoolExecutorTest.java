@@ -30,6 +30,14 @@ public class ThreadPoolExecutorTest {
         threadPool.execute(boss); //主线程必须在启动其他线程后立即调用CountDownLatch.await()方法。
 
         threadPool.shutdown();
+
+        //使用多线程案例2：通过for循环指定线程数量
+        /*int threadNumber = 5;
+        for (int i = 0; i < threadNumber; i++) {
+            threadPool.execute( new Worker(countDownLatch, "张三"));
+        }*/
+
+
     }
 
 }

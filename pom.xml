@@ -73,6 +73,21 @@
             <version>3.6.5</version>
         </dependency>
 
+        <!-- kafka客户端依赖包https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+        <!--<dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.2.1</version>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.12</artifactId>
+            <version>0.10.2.1</version>
+        </dependency>
+
+
 
 
     </dependencies>
