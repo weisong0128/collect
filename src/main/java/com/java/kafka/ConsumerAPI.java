@@ -52,7 +52,8 @@ public class ConsumerAPI {
         while(true) {
             ConsumerRecords<String, String> consumerRecords = consumer.poll(100);
             for (ConsumerRecord<String, String> record : consumerRecords) {
-                System.out.printf("消费情况：partition = %d,offset = %d, key = %s, value = %s%n",record.partition(), record.offset(), record.key(), record.value());
+//                System.out.printf("消费情况：partition = %d,offset = %d, key = %s, value = %s%n",record.partition(), record.offset(), record.key(), record.value());
+                System.out.println("record.key()值为：" + record.key() + "," + "record.value()值为：" + record.value());
                 System.out.println();
             }
         }

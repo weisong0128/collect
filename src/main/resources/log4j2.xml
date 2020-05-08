@@ -11,6 +11,7 @@
     <Appenders>
         <!-- 这个输出控制台的配置 -->
         <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <!-- 输出日志的格式,%d：输出日志时间点的日期或时间 %p：输出日志信息优先级 %l：输出日志的位置 %m：输出代码中指定的日志具体信息 %n：输出一个回车换行符 -->
             <PatternLayout pattern="[%d][%-5p][%t] %m (%F:%L)%n"/>
         </Console>

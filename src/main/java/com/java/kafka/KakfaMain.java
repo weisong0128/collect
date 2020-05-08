@@ -10,9 +10,26 @@ import org.junit.Test;
 
 public class KakfaMain {
 
-    @Test
+    public static void main(String[] args) {
+        String topic = "topic_0507";
+        ConsumerAPI ct = new ConsumerAPI();
+        ct.getMessage(topic);
+
+
+//        String topic = "topic_0507";
+//
+//        StringBuilder msg = new StringBuilder("hello kafka003!" + System.currentTimeMillis());
+//        ProducerAPI producerAPI = new ProducerAPI();
+//        producerAPI.sendMessage(topic,msg.toString());
+
+    }
+
+
+
+
+    /*@Test
     public void produceTest() {
-        String topic = "ws_topic_04";
+        String topic = "topic_0429";
 
         StringBuilder msg = new StringBuilder("hello kafka003!" + System.currentTimeMillis());
         ProducerAPI producerAPI = new ProducerAPI();
@@ -21,9 +38,9 @@ public class KakfaMain {
 
     @Test
     public void consumeTest() {
-        String topic = "ws_topic_04";
+        String topic = "topic_0429";
         ConsumerAPI ct = new ConsumerAPI();
         ct.getMessage(topic);
-    }
+    }*/
 
 }
