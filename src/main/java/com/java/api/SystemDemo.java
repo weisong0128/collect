@@ -3,7 +3,7 @@ package com.java.api;
 import java.net.URL;
 
 /**
- * description:
+ * description: 获取当前时间：System.currentTimeMillis()，获取当前项目绝对路径：System.getProperty("user.dir")
  * author: ws
  * time: 2020/3/8 14:26
  */
