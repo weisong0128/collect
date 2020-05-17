@@ -1,7 +1,7 @@
 package com.java.kafka;
 
 /**
- * @description:
+ * @description: 这其实是单kafkaconsumer多work模式
  * @author: ws
  * @time: 2020/5/10 15:36
  */
