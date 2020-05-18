@@ -1,4 +1,4 @@
-package com.java.kafka;
+package com.java.kafka.old;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -36,7 +36,7 @@ public class ProducerAPI {
         ProducerRecord<String, String> record = new ProducerRecord(topic,msg);
 
         //消息发送（生产）
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
             producer.send(record);
         }
         System.out.println("kafka消息生产结束");

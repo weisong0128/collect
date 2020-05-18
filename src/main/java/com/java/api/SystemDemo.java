@@ -1,6 +1,8 @@
 package com.java.api;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * description: 获取当前时间：System.currentTimeMillis()，获取当前项目绝对路径：System.getProperty("user.dir")
@@ -44,5 +46,12 @@ public class SystemDemo {
 
         URL resource = SystemDemo.class.getResource("/");//结果：file:/G:/git/ws/collect/target/classes/
         System.out.println(resource);
+
+        String aa = "aa";
+        String bb = "bb";
+        List<String> strings = Arrays.asList(aa,bb);
+        System.out.println("strings.size()=" + strings.size());
+        System.out.println(strings.get(1));
+
     }
 }

@@ -29,9 +29,15 @@ public class ObjectsDemo {
 //        System.out.println(result); //true
 
 //        public static Boolean nonNull(对象)   判断对象是否不为空
-        Student s = new Student();
-        boolean result = Objects.nonNull(s);
-        System.out.println(result); //true
+//        Student s = new Student();
+//        boolean result = Objects.nonNull(s);
+//        System.out.println(result); //true
+
+
+        String[] strArray ={"11","22"};
+        String haha = Objects.toString(strArray[3], "haha");
+        System.out.println(haha);
+
 
     }
 
