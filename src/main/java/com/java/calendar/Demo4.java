@@ -1,4 +1,4 @@
-package com.java.demo;
+package com.java.calendar;
 
 import java.util.Random;
 

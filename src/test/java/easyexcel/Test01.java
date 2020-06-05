@@ -1,6 +1,8 @@
 package easyexcel;
 
-import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @description: 描述
@@ -10,10 +12,18 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Test01 {
     public static void main(String[] args) {
-        String str = "1,2,3,4,5";
-        String[] split = StringUtils.split(str, ",");
-        StringBuilder sb = new StringBuilder();
-        sb.append("?,").appendCodePoint(3);
-        System.out.println(sb.toString());
+//       Stri ng str = "1,2,3,4,5";
+//        String[] split = StringUtils.split(str, ",");
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("?,").appendCodePoint(3);
+//        System.out.println(sb.toString());
+
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "1");
+        System.out.println(map.get("1"));
+        System.out.println("----------------------");
+        map.put("1", "2");
+        System.out.println(map.get("1"));
+
     }
 }
