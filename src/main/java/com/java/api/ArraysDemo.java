@@ -26,15 +26,15 @@ public class ArraysDemo {
 //        System.out.println("值为6的索引编号为:"+index);
 
 //        Arrays.asList()使用指南：将一个数组转换为一个List集合
-        String[] myArray = {"apple", "orange", "banana"};
-        List<String> asList = Arrays.asList(myArray);
-        //上面两个语句等价于下面一条语句
-        List<String> strings = Arrays.asList("apple", "orange", "banana");
-        System.out.println(asList); //结果为：[apple, orange, banana]
-        System.out.println(strings);    //[apple, orange, banana]
-        for (int i = 0; i < asList.size(); i++) {
-            System.out.println(asList.get(i));
-        }
+//        String[] myArray = {"apple", "orange", "banana"};
+//        List<String> asList = Arrays.asList(myArray);
+//        //上面两个语句等价于下面一条语句
+//        List<String> strings = Arrays.asList("apple", "orange", "banana");
+//        System.out.println(asList); //结果为：[apple, orange, banana]
+//        System.out.println(strings);    //[apple, orange, banana]
+//        for (int i = 0; i < asList.size(); i++) {
+//            System.out.println(asList.get(i));
+//        }
 
     }
 }
